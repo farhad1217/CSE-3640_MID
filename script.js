@@ -1,6 +1,6 @@
 const ans = ["A", "B", "C", "D", "D", "C", "B", "A", "B", "D"];
 const total = ans.length;
-let submitted = false; // to prevent double submit
+let submitted = false;
 
 function getSelectedAnswer(questionNum) {
   const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
@@ -18,10 +18,10 @@ function score() {
 }
 
 function checkResult() {
-  if (submitted) return; // prevent double submission
+  if (submitted) return;
   submitted = true;
 
-  clearInterval(timer); // stop the timer
+  clearInterval(timer);
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -38,17 +38,17 @@ function checkResult() {
   document.getElementById("submitBtn").disabled = true;
 }
 
-// TIMER logic
-let timeLeft = 20;
+let timeLeft = 30;
+let tconst = timeLeft;
 const timerElement = document.getElementById("timer");
 
 const timer = setInterval(() => {
   timeLeft--;
-  timerElement.textContent = `🕒Time left: ${timeLeft}s`;
-  if (timeLeft < 10) {
+  timerElement.textContent = `🕒Time left: ${timeLeft} Seconds`;
+  if (timeLeft < tconst/3) {
     timerElement.style.color = "red";
   } else {
-    timerElement.style.color = "green";
+    timerElement.style.color = "green-600";
   }
 
   if (timeLeft <= 0) {
